@@ -22,18 +22,12 @@ var main = (function () {
             clear_help: "Clear the terminal screen.",
             reboot_help: "Reboot the system.",
             cd_help: "Change the current working directory.",
-            mv_help: "Move (rename) files.",
-            rm_help: "Remove files or directories.",
-            rmdir_help: "Remove directory, this command will only work if the folders are empty.",
-            touch_help: "Change file timestamps. If the file doesn't exist, it's created an empty one.",
-            sudo_help: "Execute a command as the superuser.",
             welcome: "H-hello?~",
             internet_explorer_warning: "NOTE: I see you're using internet explorer, this website won't work properly.",
             welcome_file_name: "welcome_message.txt",
             invalid_command_message: "<value>: command not found.",
             reboot_message: "Preparing to reboot...\n\n3...\n\n2...\n\n1...\n\nRebooting...\n\n",
             permission_denied_message: "Unable to '<value>', permission denied.",
-            sudo_message: "Unable to sudo using a web client.",
             usage: "Usage",
             file: "file",
             file_not_found: "File '<value>' not found.",
@@ -132,11 +126,6 @@ var main = (function () {
         CLEAR: { value: "clear", help: configs.getInstance().clear_help },
         REBOOT: { value: "reboot", help: configs.getInstance().reboot_help },
         CD: { value: "cd", help: configs.getInstance().cd_help },
-        MV: { value: "mv", help: configs.getInstance().mv_help },
-        RM: { value: "rm", help: configs.getInstance().rm_help },
-        RMDIR: { value: "rmdir", help: configs.getInstance().rmdir_help },
-        TOUCH: { value: "touch", help: configs.getInstance().touch_help },
-        SUDO: { value: "sudo", help: configs.getInstance().sudo_help }
     };
 
 
@@ -344,15 +333,6 @@ var main = (function () {
                 this.reboot();
                 break;
             case cmds.CD.value:
-            case cmds.MV.value:
-            case cmds.RMDIR.value:
-            case cmds.RM.value:
-            case cmds.TOUCH.value:
-                this.permissionDenied(cmdComponents);
-                break;
-            case cmds.SUDO.value:
-                this.sudo();
-                break;
             default:
                 this.invalidCommand(cmdComponents);
                 break;
@@ -378,10 +358,6 @@ var main = (function () {
         }
         this.type(result.trim(), this.unlock.bind(this));
     };
-
-    Terminal.prototype.sudo = function () {
-        this.type(configs.getInstance().sudo_message, this.unlock.bind(this));
-    }
 
     Terminal.prototype.whoami = function (cmdComponents) {
         var result = configs.getInstance().username + ": " + configs.getInstance().user + "\n" + configs.getInstance().hostname + ": " + configs.getInstance().host + "\n" + configs.getInstance().platform + ": " + navigator.platform + "\n" + configs.getInstance().accesible_cores + ": " + navigator.hardwareConcurrency + "\n" + configs.getInstance().language + ": " + navigator.language;
