@@ -22,6 +22,8 @@ var main = (function () {
             clear_help: "Clear the terminal screen.",
             reboot_help: "Reboot the system.",
             cd_help: "Change the current working directory.",
+            login_help: "Login to an account".
+            password_help: "Enter a password",
             welcome: "H-hello?~",
             internet_explorer_warning: "NOTE: I see you're using internet explorer, this website won't work properly.",
             welcome_file_name: "welcome_message.txt",
@@ -120,6 +122,7 @@ var main = (function () {
     var cmds = {
         LS: { value: "ls", help: configs.getInstance().ls_help },
         CAT: { value: "cat", help: configs.getInstance().cat_help },
+        PASSWORD: { value: "password", help: configs.getInstance().password_help },
         WHOAMI: { value: "whoami", help: configs.getInstance().whoami_help },
         DATE: { value: "date", help: configs.getInstance().date_help },
         HELP: { value: "help", help: configs.getInstance().help_help },
@@ -314,6 +317,9 @@ var main = (function () {
             case cmds.CAT.value:
                 this.cat(cmdComponents);
                 break;
+                case cmds.PASSWORD.value:
+                this.password(cmdComponents);
+                break;
             case cmds.LS.value:
                 this.ls();
                 break;
@@ -369,7 +375,7 @@ var main = (function () {
     };
 
     Terminal.prototype.help = function () {
-        var result = configs.getInstance().general_help + "\n\n";
+        var result = configs.getInstance().general_help + "\n\nTEST";
         for (var cmd in cmds) {
             result += cmds[cmd].value + " - " + cmds[cmd].help + "\n";
         }
