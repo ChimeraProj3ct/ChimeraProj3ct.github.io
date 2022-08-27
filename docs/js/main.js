@@ -24,7 +24,7 @@ var main = (function () {
             cd_help: "Change the current working directory.",
             login_help: "Login to an account".
             password_help: "Enter a password",
-            welcome: "H-hello?~",
+            welcome: "H-hello?~ btw this updated",
             internet_explorer_warning: "NOTE: I see you're using internet explorer, this website won't work properly.",
             welcome_file_name: "welcome_message.txt",
             invalid_command_message: "<value>: command not found.",
