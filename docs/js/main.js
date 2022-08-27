@@ -43,7 +43,7 @@ var main = (function () {
             accesible_cores: "Accessible cores",
             language: "Language",
             value_token: "<value>",
-            host: "terminal.com",
+            host: "chimeraproj3ct.github.io",
             user: "guest",
             is_root: false,
             type_delay: 20
